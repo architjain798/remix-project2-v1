@@ -6,4 +6,4 @@ export default function UpdateExpensePage() {
     </div>
   );
 }
-// // expense/$id  // expense/123
+// Example route: /expense/123
