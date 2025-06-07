@@ -1,8 +1,5 @@
-export default function ExpensesAddPage() {
-  return (
-    <div>
-      <h1>Expenses Add Page</h1>
-    </div>
-  );
+// /expenses/add
+
+export default function AddExpensesPage() {
+  return <h1>Add Expenses Page</h1>;
 }
-// expenses/add

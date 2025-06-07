@@ -1,9 +1,5 @@
-export default function UpdateExpensePage() {
-  return (
-    <div>
-      <h1>Update Expense Page</h1>
-      <p>This page is used to update an existing expense.</p>
-    </div>
-  );
+// /expenses/<some-id> => /expenses/expense-1, /expenses/e-1
+
+export default function UpdateExpensesPage() {
+  return <h1>Update Expenses Page</h1>;
 }
-// Example route: /expense/123
