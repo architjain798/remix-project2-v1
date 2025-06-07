@@ -3,7 +3,7 @@
 import Chart from "~/components/expenses/Chart";
 import ExpenseStatistics from "~/components/expenses/ExpenseStatistics";
 
-const DUMMY_EXPENSES = [
+export const DUMMY_EXPENSES = [
   { id: "e1", title: "Car Insurance", amount: 294.67, date: "2023-01-01" },
   { id: "e2", title: "Groceries", amount: 94.12, date: "2023-02-15" },
   { id: "e3", title: "Electricity Bill", amount: 120.5, date: "2023-03-10" },
