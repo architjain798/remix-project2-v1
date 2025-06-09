@@ -34,7 +34,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <MainHeader />
+        {/* <MainHeader /> */}
         <Outlet />
         <ScrollRestoration />
         <Scripts />
