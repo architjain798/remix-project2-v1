@@ -18,7 +18,8 @@
   "devDependencies": {
     "@remix-run/dev": "^1.7.2",
     "@remix-run/eslint-config": "^1.7.2",
-    "eslint": "^8.23.1"
+    "eslint": "^8.23.1",
+    "prisma": "^4.5.0"
   },
   "engines": {
     "node": ">=14"
