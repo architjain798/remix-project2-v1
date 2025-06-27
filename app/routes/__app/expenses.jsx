@@ -48,17 +48,18 @@ export function links() {
 export async function loader() {
   const expenses = await getExpenses();
 
-  if (!expenses || expenses.length === 0) {
-    throw json(
-      {
-        message: "Could not find any expenses",
-      },
-      {
-        status: 404,
-        statusText: "No expenses found",
-      }
-    );
-  }
+  // if (!expenses || expenses.length === 0) {
+  //   throw json(
+  //     {
+  //       message: "Could not find any expenses",
+  //     },
+  //     {
+  //       status: 404,
+  //       statusText: "No expenses found",
+  //     }
+  //   );
+  // }
+  return expenses;
 }
 
 export function CatchBoundary() {
