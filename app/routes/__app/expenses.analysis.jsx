@@ -1,21 +1,48 @@
 // /expenses/analysis
 
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { useCatch } from "public/build/_shared/chunk-SZR6WJ3E";
 import Chart from "~/components/expenses/Chart";
 import ExpenseStatistics from "~/components/expenses/ExpenseStatistics";
-
-export const DUMMY_EXPENSES = [
-  { id: "e1", title: "Car Insurance", amount: 294.67, date: "2023-01-01" },
-  { id: "e2", title: "Groceries", amount: 94.12, date: "2023-02-15" },
-  { id: "e3", title: "Electricity Bill", amount: 120.5, date: "2023-03-10" },
-  { id: "e4", title: "Internet Bill", amount: 60.0, date: "2023-04-05" },
-  { id: "e5", title: "Gym Membership", amount: 45.0, date: "2023-05-20" },
-];
+import Error from "~/components/util/Error";
+import { getExpenses } from "~/data/expenses.server";
 
 export default function ExpensesAnalysisPage() {
+  const expenses = useLoaderData();
   return (
     <main>
-      <Chart expenses={DUMMY_EXPENSES} />
-      <ExpenseStatistics expenses={DUMMY_EXPENSES} />
+      <Chart expenses={expenses} />
+      <ExpenseStatistics expenses={expenses} />
+    </main>
+  );
+}
+
+export async function loader() {
+  let expenses = await getExpenses();
+
+  if (!expenses || expenses.length === 0) {
+    throw json(
+      {
+        message: "Could not load expenses for the requested analysis",
+      },
+      {
+        status: 404,
+        statusText: "Expenses not found",
+      }
+    );
+  }
+
+  return expenses;
+}
+
+export function CatchBoundary() {
+  const caughtResponse = useCatch();
+  return (
+    <main>
+      <Error title={caughtResponse.data}>
+        <p>{caughtResponse.data?.message ?? "Something went wrong"}</p>
+      </Error>
     </main>
   );
 }
