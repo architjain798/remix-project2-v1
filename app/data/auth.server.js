@@ -2,11 +2,14 @@ import { prisma } from "./database.server";
 import { hash } from "bcryptjs"
 
 export async function signup({ email, password }) {
-    const existingUser = prisma.user.findFirst({
+    const existingUser = await prisma.user.findFirst({
         where: {
             email
         }
     })
+
+    console.log("existing", existingUser);
+
 
     if (existingUser) {
         const error = new Error("A user with the provided email address exists already.")

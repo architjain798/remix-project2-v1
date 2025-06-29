@@ -8,7 +8,7 @@ export default function AuthPage() {
   return <AuthForm />;
 }
 
-export async function actions({ request }) {
+export async function action({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const authMode = searchParams.get("mode") ?? "login";
 
@@ -24,6 +24,8 @@ export async function actions({ request }) {
   if (authMode === "login") {
     //login
   } else {
+    console.log("auth mode is");
+
     await signup(credentials);
     return redirect("/expenses");
   }
