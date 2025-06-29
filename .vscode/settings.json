@@ -1,7 +1,7 @@
 {
     "github.copilot.chat.commitMessageGeneration.instructions": [
         {
-            "text": "Write the message short and crisp and add emojis if you feel"
+            "text": "Write the message short and crisp, if it is feature the use feat and if it is a then add bugfix like these terminolgy"
         }
     ]
 }
