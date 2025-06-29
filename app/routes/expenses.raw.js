@@ -4,6 +4,6 @@ import { requireUserSession } from "~/data/auth.server";
 import { getExpense } from "~/data/expenses.server";
 
 export async function loader({ request }) {
-  await requireUserSession(request);
-  return getExpense();
+  const userId = await requireUserSession(request);
+  return getExpense(userId);
 }

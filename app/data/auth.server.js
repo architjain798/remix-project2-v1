@@ -53,7 +53,7 @@ export async function requireUserSession(request) {
         throw redirect('/auth?mode=signin');
     }
 
-
+    return userId
 }
 
 export async function signup({ email, password }) {
