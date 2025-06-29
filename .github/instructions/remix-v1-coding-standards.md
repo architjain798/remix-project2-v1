@@ -1,6 +1,9 @@
 ---
 description: "Specific coding standards and naming conventions for Remix v1 project"
-applyTo: "**/*.jsx"
+applyTo:
+  - "**/*.jsx"
+  - "**/*.server.js"
+  - "**/*.css"
 ---
 
 # GitHub Copilot Instructions for Remix v1 Project Coding Standards & Naming Conventions
@@ -23,6 +26,8 @@ This project is built with Remix v1, React, and Prisma. It manages expenses, aut
   - Use Remix loaders and actions for server-side data fetching and mutations.
   - Prefer Remix-specific hooks (`useLoaderData`, `useActionData`, `useNavigate`, `useParams`, `useMatches`) over generic React hooks when applicable.
   - Always handle errors gracefully using Remix's built-in `CatchBoundary` and `ErrorBoundary`.
+  - Prefer Remix's `<Form>` component for handling form submissions.
+  - Use Remix's `<Link>` and `<NavLink>` components for internal navigation.
 
 - **Prisma**
   - Database interactions must use Prisma client methods defined in `app/data/*.server.js`.
@@ -54,6 +59,16 @@ This project is built with Remix v1, React, and Prisma. It manages expenses, aut
 
 - **Constants**
   - UPPER_SNAKE_CASE for constants (e.g., `SESSION_SECRET`, `PRICING_PLANS`).
+
+## Testing Guidelines
+
+- Write tests using Jest and React Testing Library.
+- Test Remix loaders and actions separately from UI components.
+
+## Accessibility
+
+- Ensure components are accessible and follow ARIA best practices.
+- Use semantic HTML elements whenever possible.
 
 ## Folder Structure (Remix v1)
 
