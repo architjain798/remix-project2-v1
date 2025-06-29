@@ -13,6 +13,8 @@ export async function addExpense(expenseData, userId) {
       },
     });
   } catch (error) {
+    console.log(error.message);
+
     throw new Error("Failed to add a response");
   }
 }
