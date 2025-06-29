@@ -24,6 +24,16 @@ async function createUserSession(userId, redirectPath) {
     })
 }
 
+export async function destroyUserSession(request) {
+    const session = sessionStorage.getSession(request.headers.get('Cookie'));
+
+    return redirect('/', {
+        headers: {
+            'Set-Cookie': await sessionStorage.destroySession(session)
+        }
+    })
+}
+
 export async function getUserFromSession(request) {
     const session = sessionStorage.getSession(request.headers.get('Cookie'));
 
