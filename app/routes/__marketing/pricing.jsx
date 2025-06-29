@@ -45,3 +45,13 @@ export function meta() {
     description: "See our pricining plans.",
   };
 }
+
+export function headers({ actionHeaders, loaderHeaders, parentHeaders }) {
+  return {
+    "Cache-Control": parentHeaders.get("Cache-Control"), // 60 minutes
+  };
+}
+
+export const handle = {
+  disableJs: true,
+};
