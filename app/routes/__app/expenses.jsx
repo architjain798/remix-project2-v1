@@ -6,6 +6,7 @@ import expensesStyles from "~/styles/expenses.css";
 import { FaDownload, FaPlus } from "react-icons/fa";
 import { getExpenses } from "~/data/expenses.server";
 import { json } from "@remix-run/node";
+import { requireUserSession } from "~/data/auth.server";
 
 export default function ExpensesLayout() {
   const expenses = useLoaderData();
@@ -45,20 +46,10 @@ export function links() {
   return [{ rel: "stylesheet", href: expensesStyles }];
 }
 
-export async function loader() {
-  const expenses = await getExpenses();
+export async function loader({ request }) {
+  await requireUserSession(request);
 
-  // if (!expenses || expenses.length === 0) {
-  //   throw json(
-  //     {
-  //       message: "Could not find any expenses",
-  //     },
-  //     {
-  //       status: 404,
-  //       statusText: "No expenses found",
-  //     }
-  //   );
-  // }
+  const expenses = await getExpenses();
   return expenses;
 }
 
